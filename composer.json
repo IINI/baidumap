@@ -1,0 +1,37 @@
+{
+    "name": "laravel-admin-ext/baidumap",
+    "description": "description...",
+    "type": "library",
+    "keywords": [
+        "laravel-admin",
+        "extension"
+    ],
+    "homepage": "https://github.com/laravel-admin-ext/baidumap",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "IINI",
+            "email": "iini@qq.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "encore/laravel-admin": "~1.6"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Encore\\BaiduMap\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Encore\\BaiduMap\\BaiduMapServiceProvider"
+            ]
+        }
+    },
+    "version": "0.0.1"
+}

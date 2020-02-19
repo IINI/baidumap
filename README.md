@@ -148,9 +148,10 @@ Editing the `vendor/laravel-admin-ext/baidumap/map-init.js` file to customize ma
         }
     });
 
-
-
 ```
+
+If you have any questions or have better Suggestions, please contact me at `2621886267@qq.com`
+
 License
 ------------
 Licensed under [The MIT License (MIT)](LICENSE).

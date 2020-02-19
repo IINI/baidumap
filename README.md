@@ -67,7 +67,12 @@ Create a view in views directory like `resources/views/admin/map.blade.php`, and
 </script>
 
 ```
+editing `app/Admin/route.php` add route 
 
+```php
+    $router->get('/map','BaiduMapController@index')->name('map');
+    $router->get("/map/point",'BaiduMapController@point');
+```
 add `BaiduMapController.php` in `App\Admin\Controllers`
 
 ```php
@@ -82,20 +87,18 @@ class BaiduMapController extends Controller
     }
     public function point()                 //jQuery to use Ajax to get the location coordinates json
     {                    
-        $machinelist = DB::table("machine")->get();
-        foreach ($machinelist as &$item) {
+        $list = DB::table("data")->get();     //从数据库中获取标注点位置
+        foreach ($list as &$item)             //遍历删除或增加list,list中有标注点的经纬度,js中用到例如：data[i].longitude, data[i].latitude
             $item->machineid
                 = $item->id;
             unset($item->id);
-            $item->machinename = $item->machine_name;
-            unset($item->machine_name);
-            $item->machinenumber = $item->machine_number;
-            unset($item->machine_number);
+            $item->pointname = $item->name;
+            unset($item->name);
             unset($item->created_at);
             unset($item->updated_at);
         }
         unset($item);
-        return json_decode($machinelist,JSON_UNESCAPED_UNICODE);
+        return json_decode($list,JSON_UNESCAPED_UNICODE);
     }
 }
 ```
@@ -110,7 +113,7 @@ Editing the `vendor/laravel-admin-ext/baidumap/map-init.js` file to customize ma
         success: function (data) {
             var res_url = 'https://xxx.com/vendor/laravel-admin-ext/baidumap/'; //获取自定义的标注图标的根路由(记住修改域名)
             var map = new BMap.Map("container");
-            var point = new BMap.Point(106.633979, 26.388056);
+            var point = new BMap.Point(106.633979, 26.388056);  //自定义初始中心位置
             map.centerAndZoom(point, 17);  // 编写自定义函数，创建标注
             var myIcon = new BMap.Icon("site.png", new BMap.Size(52, 94));
             var myIcon10 = new BMap.Icon(res_url+"ten_percent.png", new BMap.Size(52, 94));//把图标实例化(图标建议使用50px*50px大小)
@@ -131,7 +134,7 @@ Editing the `vendor/laravel-admin-ext/baidumap/map-init.js` file to customize ma
                 content += "<p>剩余纸张数:" + data[i].hasa4 + "<br>机器状态：" + status + "<br><a href=''>添加纸张</a></p>";
                 content += "</div>";
                 //监听marker点击后 弹出信息框
-                map.addOverlay(createMarker(new BMap.Point(data[i].longitude, data[i].latitude), {icon: createIcon(data[i].hasa4)}, content, opts))
+                map.addOverlay(createMarker(new BMap.Point(data[i].longitude, data[i].latitude), {icon: createIcon(data[i].pointname)}, content, opts))
             }
 
             function createMarker(point, icon, content, opts) {

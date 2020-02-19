@@ -36,7 +36,7 @@ Open `config/admin.php`, add configurations that belong to this extension at `ex
             
                 'https-enable'=> true,  //open api https
                 'version' => '3.0',     //api version
-                'baiduapiak' => 'L9MM6uPXHZFW3lKgE5dXUDFGqfqYGxxG'   //baidumap-api ak
+                'baiduapiak' => ''   //baidumap-api ak
                 
             ]
         ]

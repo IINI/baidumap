@@ -1,5 +1,6 @@
 Use BaiduMap in laravel-admin
 ======
+#接入百度地图.浏览器端SDK的Javascri Api,实现从数据库中获取标注点的经纬度和特定的图标类型参数来自定义标注点的位置和图标样式，引用内置的标注点点击监听时间来弹出标注点的相关信息，infowindow弹窗可以自定义
 ## Screenshot
 
 ![demo](https://github.com/IINI/baidumap/blob/master/demo.PNG)

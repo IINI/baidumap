@@ -4,7 +4,7 @@ $(function () {
         dataType: "JSON",
         url: "https://xxx.com/admin/map/point",    //自定义的获取地图标注点的经纬度(记住修改域名)
         success: function (data) {
-            var res_url = 'https://xxx.com/vendor/laravel-admin-ext/baidumap/'; //获取自定义的标注图标的根路由(记住修改域名)
+            var res_url = 'https://xxx.com/vendor/iini/baidumap/'; //获取自定义的标注图标的根路由(记住修改域名)
             var map = new BMap.Map("container");
             var point = new BMap.Point(106.633979, 26.388056);  //自定义初始中心位置
             map.centerAndZoom(point, 17);  // 编写自定义函数，创建标注

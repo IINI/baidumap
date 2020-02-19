@@ -22,12 +22,12 @@ class BaiduMapServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole() && $assets = $extension->assets()) {
             $this->publishes(
-                [$assets => public_path('vendor/laravel-admin-ext/baidumap')],
+                [$assets => public_path('vendor/iini/baidumap')],
                 'baidumap'
             );
         }
         Admin::booting(function () {
-            Admin::css('vendor/laravel-admin-ext/baidumap/map-init.css');
+            Admin::css('vendor/iini/baidumap/map-init.css');
         });
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Encore\BaiduMap;
 
+use Encore\Admin\Admin;
 use Illuminate\Support\ServiceProvider;
 
 class BaiduMapServiceProvider extends ServiceProvider
@@ -25,9 +26,8 @@ class BaiduMapServiceProvider extends ServiceProvider
                 'baidumap'
             );
         }
-
-        $this->app->booted(function () {
-            BaiduMap::routes(__DIR__.'/../routes/web.php');
+        Admin::booting(function () {
+            Admin::css('vendor/laravel-admin-ext/baidumap/map-init.css');
         });
     }
 }

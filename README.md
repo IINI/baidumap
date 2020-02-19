@@ -7,7 +7,7 @@ Use BaiduMap in laravel-admin
 ## Installation
 
 ```bash
-composer require inii/baidumap
+composer require iini/baidumap
 
 php artisan vendor:publish 
 ```

@@ -86,7 +86,7 @@ class BaiduMapController extends Controller
     public function point()                 //jQuery to use Ajax to get the location coordinates json
     {                    
         $list = DB::table("data")->get();     //从数据库中获取标注点位置
-        foreach ($list as &$item)             //遍历删除或增加list,list中有标注点的经纬度,js中用到例如：data[i].longitude, data[i].latitude
+        foreach ($list as &$item)   {          //遍历删除或增加list,list中有标注点的经纬度,js中用到例如：data[i].longitude, data[i].latitude
             $item->machineid
                 = $item->id;
             unset($item->id);

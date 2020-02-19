@@ -99,25 +99,21 @@ class BaiduMapController extends Controller
     }
 }
 ```
-Modify the `vendor/laravel-admin-ext/baidumap/map-init.js` file to customize marker and infowindow
+Editing the `vendor/laravel-admin-ext/baidumap/map-init.js` file to customize marker and infowindow
 
 ```javascript
 
     $.ajax({
         type: "get",
         dataType: "JSON",
-        url: "https://xxx.com/admin/map/point",    //
+        url: "https://xxx.com/admin/map/point",    //自定义的获取地图标注点的经纬度(记住修改域名)
         success: function (data) {
-            var res_url = 'https://xxx.com/vendor/laravel-admin-ext/baidumap/';
+            var res_url = 'https://xxx.com/vendor/laravel-admin-ext/baidumap/'; //获取自定义的标注图标的根路由(记住修改域名)
             var map = new BMap.Map("container");
             var point = new BMap.Point(106.633979, 26.388056);
             map.centerAndZoom(point, 17);  // 编写自定义函数，创建标注
             var myIcon = new BMap.Icon("site.png", new BMap.Size(52, 94));
-            var myIcon10 = new BMap.Icon(res_url+"ten_percent.png", new BMap.Size(52, 94));
-            var myIcon20 = new BMap.Icon(res_url+"twenty_percent.png", new BMap.Size(52, 94));
-            var myIcon50 = new BMap.Icon(res_url+"fifty_percent.png", new BMap.Size(52, 94));
-            var myIcon80 = new BMap.Icon(res_url+"eighty_percent.png", new BMap.Size(52, 94));
-            var myIcon98 = new BMap.Icon(res_url+"ninety_eight_percent.png", new BMap.Size(52, 94));
+            var myIcon10 = new BMap.Icon(res_url+"ten_percent.png", new BMap.Size(52, 94));//把图标实例化(图标建议使用50px*50px大小)
             //定义marker上面弹出的信息窗口
 
             map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
@@ -146,21 +142,8 @@ Modify the `vendor/laravel-admin-ext/baidumap/map-init.js` file to customize mar
                 return markerx;
             }
 
-            function createIcon(datapaper) {
-                var floar = datapaper / 4000;
-                if (floar >= 0.98) {
-                    return myIcon98;
-                } else if (floar >= 0.8 && floar < 0.98) {
-                    return myIcon80;
-                } else if (floar >= 0.5 && floar < 0.8) {
-                    return myIcon50;
-                } else if (floar >= 0.2 && floar < 0.5) {
-                    return myIcon20;
-                } else if (floar >= 0.1 && floar < 0.2) {
-                    return myIcon10;
-                } else {
-                    return myIcon;
-                }
+            function createIcon(dataicon) {
+              //根据获取的dataicon返回自定义的标注点图标
             }
         }
     });

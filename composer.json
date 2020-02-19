@@ -32,5 +32,6 @@
                 "Encore\\BaiduMap\\BaiduMapServiceProvider"
             ]
         }
-    }
+    },
+    "version":"1.0.0"
 }

@@ -10,9 +10,9 @@ Login using `admin/admin`
 ## Installation
 
 ```bash
-composer require laravel-admin-ext/chartjs
+composer require laravel-admin-ext/baidumap
 
-php artisan vendor:publish --tag=laravel-admin-chartjs
+php artisan vendor:publish --tag=laravel-admin-baidumap
 ```
 
 ## Configuration
